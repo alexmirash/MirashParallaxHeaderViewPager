@@ -4,58 +4,45 @@ package com.alex.mirash.mirashparallaxheaderviewpager.mirash.tools.view;
  * @author Mirash
  */
 public class Attributes {
-    private int mActionBarHeight;
-    private int mMinHeaderHeight;
     private int mHeaderHeight;
-    private int mMinHeaderTranslation;
-    private float mParallaxHeight;
+    private int mMinHeaderHeight;
+    private float mParallaxHeightFactor;
     private float mParallaxWidth;
 
-    public int getActionBarHeight() {
-        return mActionBarHeight;
-    }
 
-    public void setActionBarHeight(int actionBarHeight) {
-        mActionBarHeight = actionBarHeight;
-    }
-
-    public int getMinHeaderHeight() {
-        return mMinHeaderHeight;
-    }
-
-    public void setMinHeaderHeight(int minHeaderHeight) {
-        mMinHeaderHeight = minHeaderHeight;
-    }
-
-    public int getHeaderHeight() {
+    int getHeaderHeight() {
         return mHeaderHeight;
     }
 
-    public void setHeaderHeight(int headerHeight) {
+    public Attributes setHeaderHeight(int headerHeight) {
         mHeaderHeight = headerHeight;
+        return this;
     }
 
-    public int getMinHeaderTranslation() {
-        return mMinHeaderTranslation;
+    int getMinHeaderHeight() {
+        return mMinHeaderHeight;
     }
 
-    public void setMinHeaderTranslation(int minHeaderTranslation) {
-        mMinHeaderTranslation = minHeaderTranslation;
+    public Attributes setMinHeaderHeight(int minHeaderTranslation) {
+        mMinHeaderHeight = minHeaderTranslation;
+        return this;
     }
 
-    public void setParallaxHeight(float parallaxHeight) {
-        mParallaxHeight = parallaxHeight;
+    public Attributes setParallaxHeightFactor(float parallaxFactor) {
+        mParallaxHeightFactor = parallaxFactor;
+        return this;
     }
 
-    public void setParallaxWidth(float parallaxWidth) {
+    public Attributes setParallaxWidth(float parallaxWidth) {
         mParallaxWidth = parallaxWidth;
+        return this;
     }
 
-    public float getParallaxHeight() {
-        return mParallaxHeight;
+    float getParallaxHeightFactor() {
+        return mParallaxHeightFactor;
     }
 
-    public float getParallaxWidth() {
+    float getParallaxWidth() {
         return mParallaxWidth;
     }
 }

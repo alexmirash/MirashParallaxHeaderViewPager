@@ -27,7 +27,7 @@ public class SampleTabPagerAdapter extends TabPagerAdapter {
 
     @Override
     protected ScrollTabHolderFragment getTabItem(int position) {
-        return SampleTabListFragment.newInstance(position);
+        return new SampleTabListFragment();
     }
 
 }

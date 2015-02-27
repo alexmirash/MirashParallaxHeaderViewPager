@@ -13,32 +13,19 @@ import com.alex.mirash.mirashparallaxheaderviewpager.R;
 import com.alex.mirash.mirashparallaxheaderviewpager.mirash.tools.ScrollTabHolderFragment;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class SampleTabListFragment extends ScrollTabHolderFragment implements OnScrollListener {
-
-    private static final String ARG_POSITION = "position";
-
     private ListView mListView;
     private ArrayList<String> mListItems;
 
-    private int mPosition;
-
-    public static ScrollTabHolderFragment newInstance(int position) {
-        SampleTabListFragment f = new SampleTabListFragment();
-        Bundle b = new Bundle();
-        b.putInt(ARG_POSITION, position);
-        f.setArguments(b);
-        return f;
-    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mPosition = getArguments().getInt(ARG_POSITION);
-
         mListItems = new ArrayList<>();
-
-        for (int i = 1; i <= 100; i++) {
+        int count = 50 + new Random().nextInt(50);
+        for (int i = 0; i < count; i++) {
             mListItems.add(i + ". item - currnet page: " + (mPosition + 1));
         }
     }
@@ -60,7 +47,7 @@ public class SampleTabListFragment extends ScrollTabHolderFragment implements On
         super.onActivityCreated(savedInstanceState);
 
         mListView.setOnScrollListener(this);
-        mListView.setAdapter(new ArrayAdapter<String>(getActivity(), R.layout.list_item, android.R.id.text1, mListItems));
+        mListView.setAdapter(new ArrayAdapter<>(getActivity(), R.layout.list_item, android.R.id.text1, mListItems));
     }
 
     @Override
@@ -68,15 +55,15 @@ public class SampleTabListFragment extends ScrollTabHolderFragment implements On
         if (scrollHeight == 0 && mListView.getFirstVisiblePosition() >= 1) {
             return;
         }
-
         mListView.setSelectionFromTop(1, scrollHeight);
 
     }
 
     @Override
     public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
-        if (mScrollTabHolder != null)
+        if (mScrollTabHolder != null) {
             mScrollTabHolder.onScroll(view, firstVisibleItem, visibleItemCount, totalItemCount, mPosition);
+        }
     }
 
     @Override

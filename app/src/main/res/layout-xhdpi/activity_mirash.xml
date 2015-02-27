@@ -3,7 +3,7 @@
              android:layout_width="match_parent"
              android:layout_height="match_parent"
     >
-    <com.alex.mirash.mirashparallaxheaderviewpager.mirash.tools.view.ParallaxHeaderPagerView
+    <com.alex.mirash.mirashparallaxheaderviewpager.mirash.tools.view.HeaderPagerView
         android:id="@+id/parallax_header_pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

@@ -1,9 +1,12 @@
 package com.alex.mirash.mirashparallaxheaderviewpager.mirash.tools;
 
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.util.SparseArrayCompat;
+
+import com.alex.mirash.mirashparallaxheaderviewpager.mirash.tools.util.MirashUtils;
 
 import java.util.List;
 
@@ -35,6 +38,14 @@ public abstract class TabPagerAdapter extends FragmentPagerAdapter {
     @Override
     public Fragment getItem(int position) {
         ScrollTabHolderFragment fragment = getTabItem(position);
+        Bundle bundle = fragment.getArguments();
+        if (bundle == null) {
+            MirashUtils.log("bundle is  null -> create and put pos = " + position);
+            bundle = new Bundle();
+            fragment.setArguments(bundle);
+        }
+        bundle.putInt(ScrollTabHolderFragment.ARG_POSITION, position);
+
         mScrollTabHolders.put(position, fragment);
         if (mListener != null) {
             fragment.setScrollTabHolder(mListener);

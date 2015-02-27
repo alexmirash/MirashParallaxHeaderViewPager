@@ -58,7 +58,7 @@ public class MainActivity extends ActionBarActivity implements ScrollTabHolder, 
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setDisplayShowHomeEnabled(true);
 
-        mMinHeaderHeight = getResources().getDimensionPixelSize(R.dimen.min_header_height);
+        mMinHeaderHeight = getResources().getDimensionPixelSize(R.dimen.max_header_height_offset);
         mHeaderHeight = getResources().getDimensionPixelSize(R.dimen.header_height);
         mMinHeaderTranslation = -mMinHeaderHeight + getActionBarHeight();
 
@@ -67,7 +67,7 @@ public class MainActivity extends ActionBarActivity implements ScrollTabHolder, 
         mHeaderPicture = (KenBurnsSupportView) findViewById(R.id.header_picture);
         mHeaderPicture.setResourceIds(R.drawable.pic0, R.drawable.pic1);
         mHeaderLogo = (ImageView) findViewById(R.id.header_logo);
-        mHeader = findViewById(R.id.header_container);
+        mHeader = findViewById(R.id.header);
 
         mPagerSlidingTabStrip = (PagerSlidingTabStrip) findViewById(R.id.tab_strip);
         mViewPager = (ViewPager) findViewById(R.id.pager);
