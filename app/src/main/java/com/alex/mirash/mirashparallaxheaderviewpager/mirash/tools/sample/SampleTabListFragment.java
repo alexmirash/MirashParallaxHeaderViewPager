@@ -1,4 +1,4 @@
-package com.alex.mirash.mirashparallaxheaderviewpager.newsstand;
+package com.alex.mirash.mirashparallaxheaderviewpager.mirash.tools.sample;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,10 +10,11 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.alex.mirash.mirashparallaxheaderviewpager.R;
+import com.alex.mirash.mirashparallaxheaderviewpager.mirash.tools.ScrollTabHolderFragment;
 
 import java.util.ArrayList;
 
-public class SampleListFragment extends ScrollTabHolderFragment implements OnScrollListener {
+public class SampleTabListFragment extends ScrollTabHolderFragment implements OnScrollListener {
 
     private static final String ARG_POSITION = "position";
 
@@ -23,7 +24,7 @@ public class SampleListFragment extends ScrollTabHolderFragment implements OnScr
     private int mPosition;
 
     public static ScrollTabHolderFragment newInstance(int position) {
-        SampleListFragment f = new SampleListFragment();
+        SampleTabListFragment f = new SampleTabListFragment();
         Bundle b = new Bundle();
         b.putInt(ARG_POSITION, position);
         f.setArguments(b);
@@ -35,7 +36,7 @@ public class SampleListFragment extends ScrollTabHolderFragment implements OnScr
         super.onCreate(savedInstanceState);
         mPosition = getArguments().getInt(ARG_POSITION);
 
-        mListItems = new ArrayList<String>();
+        mListItems = new ArrayList<>();
 
         for (int i = 1; i <= 100; i++) {
             mListItems.add(i + ". item - currnet page: " + (mPosition + 1));

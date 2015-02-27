@@ -67,9 +67,9 @@ public class MainActivity extends ActionBarActivity implements ScrollTabHolder, 
         mHeaderPicture = (KenBurnsSupportView) findViewById(R.id.header_picture);
         mHeaderPicture.setResourceIds(R.drawable.pic0, R.drawable.pic1);
         mHeaderLogo = (ImageView) findViewById(R.id.header_logo);
-        mHeader = findViewById(R.id.header);
+        mHeader = findViewById(R.id.header_container);
 
-        mPagerSlidingTabStrip = (PagerSlidingTabStrip) findViewById(R.id.tabs);
+        mPagerSlidingTabStrip = (PagerSlidingTabStrip) findViewById(R.id.tab_strip);
         mViewPager = (ViewPager) findViewById(R.id.pager);
         mViewPager.setOffscreenPageLimit(4);
 
