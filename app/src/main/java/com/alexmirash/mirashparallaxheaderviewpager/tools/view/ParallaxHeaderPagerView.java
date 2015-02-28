@@ -1,11 +1,11 @@
 package com.alexmirash.mirashparallaxheaderviewpager.tools.view;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AbsListView;
 import android.widget.FrameLayout;
 
 import com.alexmirash.mirashparallaxheaderviewpager.R;
@@ -33,24 +33,29 @@ public class ParallaxHeaderPagerView extends FrameLayout implements IScrollTabHo
     protected ICallbacks mCallbacks;
 
     public ParallaxHeaderPagerView(Context context) {
-        super(context);
-        init(context);
+        this(context, null);
     }
 
     public ParallaxHeaderPagerView(Context context, AttributeSet attrs) {
-        super(context, attrs);
-        init(context);
+        this(context, attrs, 0);
     }
 
     public ParallaxHeaderPagerView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+        mAttrs = new Attributes();
+        //TODO not sure if i need it
+        if (attrs != null) {
+            TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.ParallaxHeaderPagerView);
+            setMinHeaderHeight(a.getDimensionPixelSize(R.styleable.ParallaxHeaderPagerView_minHeaderHeight, 0));
+            setHeaderParallaxHeightFactor(a.getFloat(R.styleable.ParallaxHeaderPagerView_parallaxHeightFactor, 0));
+            setHeaderParallaxWidth(a.getDimensionPixelSize(R.styleable.ParallaxHeaderPagerView_parallaxWidth, 0), false);
+            a.recycle();
+        }
         init(context);
     }
 
     private void init(Context context) {
         inflate(context, R.layout.parallax_header_pager_view, this);
-        mAttrs = new Attributes();
-
         mHeaderContainer = (ViewGroup) findViewById(R.id.header_container);
 
         mPagerSlidingTabStrip = (PagerSlidingTabStrip) findViewById(R.id.tab_strip);

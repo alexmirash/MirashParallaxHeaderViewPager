@@ -1,9 +1,10 @@
 <resources>
 
-	<dimen name="activity_horizontal_margin">16dp</dimen>
-	<dimen name="activity_vertical_margin">16dp</dimen>
-	
-	<dimen name="header_height">298dp</dimen>
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <dimen name="header_height">298dp</dimen>
     <dimen name="tab_height">48dp</dimen>
+    <dimen name="header_parallax_width">160dp</dimen>
 
 </resources>

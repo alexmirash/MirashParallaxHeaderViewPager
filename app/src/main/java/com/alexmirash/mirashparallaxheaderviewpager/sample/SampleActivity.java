@@ -8,8 +8,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.alexmirash.mirashparallaxheaderviewpager.R;
-import com.alexmirash.mirashparallaxheaderviewpager.tools.util.MirashUtils;
 import com.alexmirash.mirashparallaxheaderviewpager.tools.view.ParallaxHeaderPagerView;
+
+import static com.alexmirash.mirashparallaxheaderviewpager.tools.util.MirashUtils.log;
 
 public class SampleActivity extends ActionBarActivity {
     private int mActionBarHeight;
@@ -20,7 +21,7 @@ public class SampleActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_mirash);
+        setContentView(R.layout.activity_sample);
         mPagerView = (ParallaxHeaderPagerView) findViewById(R.id.parallax_header_pager);
         mPagerView.setHeaderView(createHeader(), getResources().getDimensionPixelSize(R.dimen.header_height));
         setupHeaderParams();
@@ -44,10 +45,10 @@ public class SampleActivity extends ActionBarActivity {
 
     private void setupHeaderParams() {
         int tabStripHeight = getResources().getDimensionPixelSize(R.dimen.tab_height);
-        MirashUtils.log("abh = " + getActionBarHeight());
+        log("abh = " + getActionBarHeight());
         mPagerView.setMinHeaderHeight(tabStripHeight + getActionBarHeight());
-        mPagerView.setHeaderParallaxHeightFactor(0.55f);
-        mPagerView.setHeaderParallaxWidth(500);
+        mPagerView.setHeaderParallaxWidth(getResources().getDimension(R.dimen.header_parallax_width));
+        //        mPagerView.setHeaderParallaxHeightFactor(0.55f);
     }
 
     private View createHeader() {
