@@ -5,7 +5,5 @@
 	
 	<dimen name="header_height">298dp</dimen>
     <dimen name="tab_height">48dp</dimen>
-	<dimen name="max_header_height_offset">@dimen/tab_height</dimen>
-	<dimen name="header_logo_size">100dp</dimen>
 
 </resources>
