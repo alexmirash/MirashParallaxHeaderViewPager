@@ -1,4 +1,4 @@
-package com.alexmirash.mirashparallaxheaderviewpager.tools.view;
+package com.alexmirash.parallaxheaderviewpager.view;
 
 /**
  * @author Mirash

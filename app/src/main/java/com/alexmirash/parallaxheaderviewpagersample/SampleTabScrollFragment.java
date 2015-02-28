@@ -1,4 +1,4 @@
-package com.alexmirash.mirashparallaxheaderviewpager.sample;
+package com.alexmirash.parallaxheaderviewpagersample;
 
 import android.graphics.Color;
 import android.os.Bundle;
@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 
-import com.alexmirash.mirashparallaxheaderviewpager.tools.fragment.TabHolderScrollFragment;
+import com.alexmirash.parallaxheaderviewpager.fragment.TabHolderScrollFragment;
 
 /**
  * @author Mirash

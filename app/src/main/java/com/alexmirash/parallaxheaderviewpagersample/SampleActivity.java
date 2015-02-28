@@ -1,4 +1,4 @@
-package com.alexmirash.mirashparallaxheaderviewpager.sample;
+package com.alexmirash.parallaxheaderviewpagersample;
 
 import android.os.Build;
 import android.os.Bundle;
@@ -7,10 +7,9 @@ import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.alexmirash.mirashparallaxheaderviewpager.R;
-import com.alexmirash.mirashparallaxheaderviewpager.tools.view.ParallaxHeaderPagerView;
+import com.alexmirash.parallaxheaderviewpager.view.ParallaxHeaderPagerView;
 
-import static com.alexmirash.mirashparallaxheaderviewpager.tools.util.MirashUtils.log;
+import static com.alexmirash.parallaxheaderviewpager.util.MirashUtils.log;
 
 public class SampleActivity extends ActionBarActivity {
     private int mActionBarHeight;
@@ -44,7 +43,7 @@ public class SampleActivity extends ActionBarActivity {
     }
 
     private void setupHeaderParams() {
-        int tabStripHeight = getResources().getDimensionPixelSize(R.dimen.tab_height_test);
+        int tabStripHeight = getResources().getDimensionPixelSize(R.dimen.tab_height);
         log("abh = " + getActionBarHeight());
         mPagerView.setMinHeaderHeight(tabStripHeight + getActionBarHeight());
         mPagerView.setHeaderParallaxWidth(getResources().getDimension(R.dimen.header_parallax_width));
@@ -52,13 +51,11 @@ public class SampleActivity extends ActionBarActivity {
     }
 
     private View createHeader() {
-        return new View(this) {
-            {
-                setBackground(getResources().getDrawable(R.drawable.pic1));
-                setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                        getResources().getDimensionPixelSize(R.dimen.header_height)));
-            }
-        };
+        View view = new View(this);
+        view.setBackground(getResources().getDrawable(R.drawable.space));
+        view.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                getResources().getDimensionPixelSize(R.dimen.header_height)));
+        return view;
     }
 
     public int getActionBarHeight() {

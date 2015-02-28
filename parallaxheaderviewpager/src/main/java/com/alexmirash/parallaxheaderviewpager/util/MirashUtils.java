@@ -1,4 +1,4 @@
-package com.alexmirash.mirashparallaxheaderviewpager.tools.util;
+package com.alexmirash.parallaxheaderviewpager.util;
 
 import android.util.Log;
 

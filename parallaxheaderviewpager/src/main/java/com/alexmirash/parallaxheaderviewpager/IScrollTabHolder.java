@@ -1,4 +1,4 @@
-package com.alexmirash.mirashparallaxheaderviewpager.tools;
+package com.alexmirash.parallaxheaderviewpager;
 
 public interface IScrollTabHolder {
 

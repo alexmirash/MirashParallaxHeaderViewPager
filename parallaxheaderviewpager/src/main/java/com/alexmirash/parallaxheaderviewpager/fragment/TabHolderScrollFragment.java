@@ -1,4 +1,4 @@
-package com.alexmirash.mirashparallaxheaderviewpager.tools.fragment;
+package com.alexmirash.parallaxheaderviewpager.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.widget.ScrollView;
 
-import static com.alexmirash.mirashparallaxheaderviewpager.tools.util.MirashUtils.log;
+import static com.alexmirash.parallaxheaderviewpager.util.MirashUtils.log;
 
 /**
  * @author Mirash

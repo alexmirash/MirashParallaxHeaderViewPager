@@ -1,11 +1,11 @@
-package com.alexmirash.mirashparallaxheaderviewpager.tools.fragment;
+package com.alexmirash.parallaxheaderviewpager.fragment;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 
-import com.alexmirash.mirashparallaxheaderviewpager.tools.IScrollTabHolder;
+import com.alexmirash.parallaxheaderviewpager.IScrollTabHolder;
 
-import static com.alexmirash.mirashparallaxheaderviewpager.tools.util.MirashUtils.log;
+import static com.alexmirash.parallaxheaderviewpager.util.MirashUtils.log;
 
 
 public abstract class ScrollTabHolderFragment extends Fragment implements IScrollTabHolder {

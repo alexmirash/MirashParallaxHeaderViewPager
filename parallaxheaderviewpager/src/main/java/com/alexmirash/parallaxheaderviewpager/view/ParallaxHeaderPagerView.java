@@ -1,4 +1,4 @@
-package com.alexmirash.mirashparallaxheaderviewpager.tools.view;
+package com.alexmirash.parallaxheaderviewpager.view;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -8,14 +8,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
-import com.alexmirash.mirashparallaxheaderviewpager.R;
-import com.alexmirash.mirashparallaxheaderviewpager.tools.IScrollTabHolder;
-import com.alexmirash.mirashparallaxheaderviewpager.tools.TabPagerAdapter;
-import com.alexmirash.mirashparallaxheaderviewpager.tools.view.tabstrip.PagerSlidingTabStrip;
+import com.alexmirash.parallaxheaderviewpager.IScrollTabHolder;
+import com.alexmirash.parallaxheaderviewpager.R;
+import com.alexmirash.parallaxheaderviewpager.TabPagerAdapter;
+import com.alexmirash.parallaxheaderviewpager.view.tabstrip.PagerSlidingTabStrip;
 import com.nineoldandroids.view.ViewHelper;
 
-import static com.alexmirash.mirashparallaxheaderviewpager.tools.util.MirashUtils.clamp;
-import static com.alexmirash.mirashparallaxheaderviewpager.tools.util.MirashUtils.log;
+import static com.alexmirash.parallaxheaderviewpager.util.MirashUtils.clamp;
+import static com.alexmirash.parallaxheaderviewpager.util.MirashUtils.log;
 
 /**
  * @author Mirash

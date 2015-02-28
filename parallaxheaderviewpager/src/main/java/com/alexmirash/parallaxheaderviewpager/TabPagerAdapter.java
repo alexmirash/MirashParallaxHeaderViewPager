@@ -1,4 +1,4 @@
-package com.alexmirash.mirashparallaxheaderviewpager.tools;
+package com.alexmirash.parallaxheaderviewpager;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -6,11 +6,11 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.util.SparseArrayCompat;
 
-import com.alexmirash.mirashparallaxheaderviewpager.tools.fragment.ScrollTabHolderFragment;
+import com.alexmirash.parallaxheaderviewpager.fragment.ScrollTabHolderFragment;
 
 import java.util.List;
 
-import static com.alexmirash.mirashparallaxheaderviewpager.tools.util.MirashUtils.log;
+import static com.alexmirash.parallaxheaderviewpager.util.MirashUtils.log;
 
 /**
  * @author Mirash

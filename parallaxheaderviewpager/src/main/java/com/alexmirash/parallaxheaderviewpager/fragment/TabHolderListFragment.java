@@ -1,4 +1,4 @@
-package com.alexmirash.mirashparallaxheaderviewpager.tools.fragment;
+package com.alexmirash.parallaxheaderviewpager.fragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,7 +9,7 @@ import android.widget.AbsListView.OnScrollListener;
 import android.widget.FrameLayout;
 import android.widget.ListView;
 
-import static com.alexmirash.mirashparallaxheaderviewpager.tools.util.MirashUtils.log;
+import static com.alexmirash.parallaxheaderviewpager.util.MirashUtils.log;
 
 public abstract class TabHolderListFragment<T extends ListView> extends ScrollTabHolderFragment implements OnScrollListener {
     protected FrameLayout mRootView;

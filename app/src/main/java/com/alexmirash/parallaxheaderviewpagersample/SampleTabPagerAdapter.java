@@ -1,9 +1,9 @@
-package com.alexmirash.mirashparallaxheaderviewpager.sample;
+package com.alexmirash.parallaxheaderviewpagersample;
 
 import android.support.v4.app.FragmentManager;
 
-import com.alexmirash.mirashparallaxheaderviewpager.tools.TabPagerAdapter;
-import com.alexmirash.mirashparallaxheaderviewpager.tools.fragment.ScrollTabHolderFragment;
+import com.alexmirash.parallaxheaderviewpager.TabPagerAdapter;
+import com.alexmirash.parallaxheaderviewpager.fragment.ScrollTabHolderFragment;
 
 import java.util.ArrayList;
 import java.util.List;
