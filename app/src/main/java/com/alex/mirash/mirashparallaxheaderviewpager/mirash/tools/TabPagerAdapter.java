@@ -6,6 +6,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.util.SparseArrayCompat;
 
+import com.alex.mirash.mirashparallaxheaderviewpager.mirash.tools.fragment.ScrollTabHolderFragment;
 import com.alex.mirash.mirashparallaxheaderviewpager.mirash.tools.util.MirashUtils;
 
 import java.util.List;
@@ -57,8 +58,8 @@ public abstract class TabPagerAdapter extends FragmentPagerAdapter {
         mListener = listener;
     }
 
-    public SparseArrayCompat<IScrollTabHolder> getScrollTabHolders() {
-        return mScrollTabHolders;
+    public IScrollTabHolder getScrollTabHolder(int position) {
+        return mScrollTabHolders.valueAt(position);
     }
 
     protected abstract List<String> getTitles();

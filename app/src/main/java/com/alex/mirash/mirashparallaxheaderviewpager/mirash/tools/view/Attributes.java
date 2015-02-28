@@ -4,38 +4,33 @@ package com.alex.mirash.mirashparallaxheaderviewpager.mirash.tools.view;
  * @author Mirash
  */
 public class Attributes {
-    private int mHeaderHeight;
     private int mMinHeaderHeight;
     private float mParallaxHeightFactor;
     private float mParallaxWidth;
-
+    private int mHeaderHeight;
 
     int getHeaderHeight() {
         return mHeaderHeight;
     }
 
-    public Attributes setHeaderHeight(int headerHeight) {
+    public void setHeaderHeight(int headerHeight) {
         mHeaderHeight = headerHeight;
-        return this;
     }
 
     int getMinHeaderHeight() {
         return mMinHeaderHeight;
     }
 
-    public Attributes setMinHeaderHeight(int minHeaderTranslation) {
+    public void setMinHeaderHeight(int minHeaderTranslation) {
         mMinHeaderHeight = minHeaderTranslation;
-        return this;
     }
 
-    public Attributes setParallaxHeightFactor(float parallaxFactor) {
+    public void setParallaxHeightFactor(float parallaxFactor) {
         mParallaxHeightFactor = parallaxFactor;
-        return this;
     }
 
-    public Attributes setParallaxWidth(float parallaxWidth) {
+    public void setParallaxWidth(float parallaxWidth) {
         mParallaxWidth = parallaxWidth;
-        return this;
     }
 
     float getParallaxHeightFactor() {

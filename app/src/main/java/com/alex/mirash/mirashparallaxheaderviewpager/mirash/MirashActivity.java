@@ -12,12 +12,12 @@ import android.view.ViewGroup;
 import com.alex.mirash.mirashparallaxheaderviewpager.R;
 import com.alex.mirash.mirashparallaxheaderviewpager.mirash.tools.sample.SampleTabPagerAdapter;
 import com.alex.mirash.mirashparallaxheaderviewpager.mirash.tools.util.MirashUtils;
-import com.alex.mirash.mirashparallaxheaderviewpager.mirash.tools.view.HeaderPagerView;
+import com.alex.mirash.mirashparallaxheaderviewpager.mirash.tools.view.ParallaxHeaderPagerView;
 import com.alex.mirash.mirashparallaxheaderviewpager.notboringactionbar.AlphaForegroundColorSpan;
 
 public class MirashActivity extends ActionBarActivity {
     private int mActionBarHeight;
-    private HeaderPagerView mPagerView;
+    private ParallaxHeaderPagerView mPagerView;
 
     private TypedValue mTypedValue = new TypedValue();
     private SpannableString mSpannableString;
@@ -27,14 +27,14 @@ public class MirashActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mirash);
-        mPagerView = (HeaderPagerView) findViewById(R.id.parallax_header_pager);
-        mPagerView.setHeaderView(createHeader());
+        mPagerView = (ParallaxHeaderPagerView) findViewById(R.id.parallax_header_pager);
+        mPagerView.setHeaderView(createHeader(), getResources().getDimensionPixelSize(R.dimen.header_height));
         setupHeaderParams();
         mPagerView.setPagerAdapter(new SampleTabPagerAdapter(getSupportFragmentManager()));
-        mPagerView.setCallbacks(new HeaderPagerView.ICallbacks() {
+        mPagerView.setCallbacks(new ParallaxHeaderPagerView.ICallbacks() {
             @Override
             public void onVerticalScroll(float ratio) {
-                setTitleAlpha(ratio/*clamp(5f * ratio - 4f, 0f, 1f)*/);
+                setTitleAlpha(ratio);
             }
 
             @Override

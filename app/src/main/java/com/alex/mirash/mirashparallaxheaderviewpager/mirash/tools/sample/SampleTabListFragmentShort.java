@@ -11,7 +11,7 @@ import com.alex.mirash.mirashparallaxheaderviewpager.mirash.tools.fragment.TabHo
 import java.util.ArrayList;
 import java.util.Random;
 
-public class SampleTabListFragment extends TabHolderListFragment<ListView> {
+public class SampleTabListFragmentShort extends TabHolderListFragment<ListView> {
     private ArrayList<String> mListItems;
 
 
@@ -19,7 +19,7 @@ public class SampleTabListFragment extends TabHolderListFragment<ListView> {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mListItems = new ArrayList<>();
-        int count = 50 + new Random().nextInt(50);
+        int count = 1 + new Random().nextInt(5);
         for (int i = 0; i < count; i++) {
             mListItems.add(i + ". item - currnet page: " + (mPosition + 1));
         }

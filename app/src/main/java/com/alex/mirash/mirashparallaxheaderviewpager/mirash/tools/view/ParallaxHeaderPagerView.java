@@ -1,7 +1,6 @@
 package com.alex.mirash.mirashparallaxheaderviewpager.mirash.tools.view;
 
 import android.content.Context;
-import android.support.v4.util.SparseArrayCompat;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.view.View;
@@ -21,7 +20,7 @@ import static com.alex.mirash.mirashparallaxheaderviewpager.mirash.tools.util.Mi
 /**
  * @author Mirash
  */
-public class HeaderPagerView extends FrameLayout implements IScrollTabHolder, ViewPager.OnPageChangeListener {
+public class ParallaxHeaderPagerView extends FrameLayout implements IScrollTabHolder, ViewPager.OnPageChangeListener {
     protected ViewGroup mHeaderContainer;
     protected View mHeader;
 
@@ -33,21 +32,24 @@ public class HeaderPagerView extends FrameLayout implements IScrollTabHolder, Vi
 
     protected ICallbacks mCallbacks;
 
-    public HeaderPagerView(Context context) {
+    public ParallaxHeaderPagerView(Context context) {
         super(context);
         init(context);
     }
 
-    public HeaderPagerView(Context context, AttributeSet attrs) {
+    public ParallaxHeaderPagerView(Context context, AttributeSet attrs) {
         super(context, attrs);
+        init(context);
+    }
+
+    public ParallaxHeaderPagerView(Context context, AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
         init(context);
     }
 
     private void init(Context context) {
         inflate(context, R.layout.parallax_header_pager_view, this);
         mAttrs = new Attributes();
-        //TODO
-        mAttrs.setHeaderHeight(getResources().getDimensionPixelSize(R.dimen.header_height));
 
         mHeaderContainer = (ViewGroup) findViewById(R.id.header_container);
 
@@ -55,13 +57,13 @@ public class HeaderPagerView extends FrameLayout implements IScrollTabHolder, Vi
         mViewPager = (ViewPager) findViewById(R.id.pager);
     }
 
-
-    public void setHeaderView(View header) {
+    public void setHeaderView(View header, int headerHeight) {
         if (mHeader != null) {
             mHeaderContainer.removeView(mHeader);
         }
         mHeader = header;
         mHeaderContainer.addView(header, 0);
+        mAttrs.setHeaderHeight(headerHeight);
     }
 
     public void setPagerAdapter(TabPagerAdapter adapter) {
@@ -92,33 +94,40 @@ public class HeaderPagerView extends FrameLayout implements IScrollTabHolder, Vi
         }
     }
 
-    private int getScrollY(AbsListView view) {
-        View c = view.getChildAt(0);
-        if (c == null) {
-            return 0;
-        }
-        int firstVisiblePosition = view.getFirstVisiblePosition();
-        int top = c.getTop();
-        int headerHeight = 0;
-        if (firstVisiblePosition >= 1) {
-            headerHeight = mAttrs.getHeaderHeight();
-        }
-        return firstVisiblePosition * c.getHeight() + headerHeight - top;
+    //TODO
+    public void setTabUnderHeader(boolean isWhat) {
+        log("h = " + getHeaderHeight());
+        ((MarginLayoutParams) mHeader.getLayoutParams()).bottomMargin = 144 /*mPagerSlidingTabStrip.getHeight()*/;
+        mHeaderContainer.requestLayout();
+        postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                log("h = " + getHeaderHeight());
+            }
+        }, 25);
+    }
+
+    @Override
+    public int getHeaderHeight() {
+        return mAttrs.getHeaderHeight();
+//        return mHeaderContainer.getHeight();
+    }
+
+    @Override
+    public int getMinHeaderHeight() {
+        return mAttrs.getMinHeaderHeight();
     }
 
     //IScrollTabHolder~
     @Override
-    public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount, int pagePosition) {
+    public void onScroll(int scrollY, int pagePosition) {
         if (mViewPager.getCurrentItem() == pagePosition) {
-            int scrollY = getScrollY(view);
-            int maxTranslationY = mAttrs.getMinHeaderHeight() - mHeaderContainer.getHeight();
+            int maxTranslationY = mAttrs.getMinHeaderHeight() - getHeaderHeight();
             ViewHelper.setTranslationY(mHeaderContainer, Math.max(-scrollY, maxTranslationY));
             float ratio = maxTranslationY != 0 ?
                     clamp(ViewHelper.getTranslationY(mHeaderContainer) / maxTranslationY, 0f, 1f) : 1f;
-            log("scrollY = " + scrollY + " ~ " + maxTranslationY +
-                    "(" + (mAttrs.getParallaxHeightFactor() > 0) + ", " + (scrollY < -maxTranslationY) + ")");
             if (mAttrs.getParallaxHeightFactor() > 0 && (scrollY < -maxTranslationY)) {
-                mHeader.setTranslationY(scrollY * mAttrs.getParallaxHeightFactor()/*mAttrs.getParallaxHeightFactor() * ratio*/);
+                mHeader.setTranslationY(scrollY * mAttrs.getParallaxHeightFactor());
             }
             if (mCallbacks != null) {
                 mCallbacks.onVerticalScroll(ratio);
@@ -145,9 +154,8 @@ public class HeaderPagerView extends FrameLayout implements IScrollTabHolder, Vi
 
     @Override
     public void onPageSelected(int position) {
-        SparseArrayCompat<IScrollTabHolder> scrollTabHolders = mPagerAdapter.getScrollTabHolders();
-        IScrollTabHolder currentHolder = scrollTabHolders.valueAt(position);
-        currentHolder.adjustScroll((int) (mHeaderContainer.getHeight() + ViewHelper.getTranslationY(mHeaderContainer)));
+        IScrollTabHolder currentHolder = mPagerAdapter.getScrollTabHolder(position);
+        currentHolder.adjustScroll((int) (getHeaderHeight() + ViewHelper.getTranslationY(mHeaderContainer)));
         if (mCallbacks != null) {
             mCallbacks.onPageSelected(position);
         }

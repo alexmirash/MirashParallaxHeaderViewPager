@@ -1,12 +1,13 @@
-package com.alex.mirash.mirashparallaxheaderviewpager.mirash.tools;
+package com.alex.mirash.mirashparallaxheaderviewpager.mirash.tools.fragment;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.widget.AbsListView;
+
+import com.alex.mirash.mirashparallaxheaderviewpager.mirash.tools.IScrollTabHolder;
 
 
 public abstract class ScrollTabHolderFragment extends Fragment implements IScrollTabHolder {
-    static final String ARG_POSITION = "position";
+    public static final String ARG_POSITION = "position";
 
     protected IScrollTabHolder mScrollTabHolder;
     protected int mPosition;
@@ -21,12 +22,18 @@ public abstract class ScrollTabHolderFragment extends Fragment implements IScrol
         mScrollTabHolder = scrollTabHolder;
     }
 
-    protected ScrollTabHolderFragment() {
+    @Override
+    public int getHeaderHeight() {
+        return mScrollTabHolder.getHeaderHeight();
     }
 
     @Override
-    public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount, int pagePosition) {
-        // nothing
+    public int getMinHeaderHeight() {
+        return mScrollTabHolder.getMinHeaderHeight();
+    }
+
+    @Override
+    public void onScroll(int scrollY, int pagePosition) {
     }
 
 }
