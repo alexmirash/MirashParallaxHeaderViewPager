@@ -11,12 +11,5 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         >
-        <com.alexmirash.mirashparallaxheaderviewpager.tools.view.tabstrip.PagerSlidingTabStrip
-            android:id="@+id/tab_strip"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/tab_height"
-            android:layout_gravity="bottom"
-            android:background="#8233eeee"
-            />
     </FrameLayout>
 </merge>

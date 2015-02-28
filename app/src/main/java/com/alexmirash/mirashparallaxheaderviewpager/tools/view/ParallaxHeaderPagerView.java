@@ -43,22 +43,23 @@ public class ParallaxHeaderPagerView extends FrameLayout implements IScrollTabHo
     public ParallaxHeaderPagerView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         mAttrs = new Attributes();
-        //TODO not sure if i need it
+        int tabStripLayoutId = R.layout.default_tab_strip;
         if (attrs != null) {
             TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.ParallaxHeaderPagerView);
             setMinHeaderHeight(a.getDimensionPixelSize(R.styleable.ParallaxHeaderPagerView_minHeaderHeight, 0));
             setHeaderParallaxHeightFactor(a.getFloat(R.styleable.ParallaxHeaderPagerView_parallaxHeightFactor, 0));
             setHeaderParallaxWidth(a.getDimensionPixelSize(R.styleable.ParallaxHeaderPagerView_parallaxWidth, 0), false);
+            tabStripLayoutId = a.getResourceId(R.styleable.ParallaxHeaderPagerView_tabStripLayout, R.layout.default_tab_strip);
             a.recycle();
         }
-        init(context);
+        init(context, tabStripLayoutId);
     }
 
-    private void init(Context context) {
+    private void init(Context context, int tabStripLayoutId) {
         inflate(context, R.layout.parallax_header_pager_view, this);
         mHeaderContainer = (ViewGroup) findViewById(R.id.header_container);
-
-        mPagerSlidingTabStrip = (PagerSlidingTabStrip) findViewById(R.id.tab_strip);
+        inflate(context, tabStripLayoutId, mHeaderContainer);
+        mPagerSlidingTabStrip = (PagerSlidingTabStrip) mHeaderContainer.getChildAt(0);
         mViewPager = (ViewPager) findViewById(R.id.pager);
     }
 
@@ -100,17 +101,17 @@ public class ParallaxHeaderPagerView extends FrameLayout implements IScrollTabHo
         }
     }
 
+    public PagerSlidingTabStrip getSlidingTabStrip() {
+        return mPagerSlidingTabStrip;
+    }
+
+    public ViewPager getViewPager() {
+        return mViewPager;
+    }
+
     //TODO
     public void setTabUnderHeader(boolean isWhat) {
-        log("h = " + getHeaderHeight());
         ((MarginLayoutParams) mHeader.getLayoutParams()).bottomMargin = 144 /*mPagerSlidingTabStrip.getHeight()*/;
-        mHeaderContainer.requestLayout();
-        postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                log("h = " + getHeaderHeight());
-            }
-        }, 25);
     }
 
     @Override

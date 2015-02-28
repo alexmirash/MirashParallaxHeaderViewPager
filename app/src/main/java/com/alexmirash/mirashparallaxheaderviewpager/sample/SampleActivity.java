@@ -44,7 +44,7 @@ public class SampleActivity extends ActionBarActivity {
     }
 
     private void setupHeaderParams() {
-        int tabStripHeight = getResources().getDimensionPixelSize(R.dimen.tab_height);
+        int tabStripHeight = getResources().getDimensionPixelSize(R.dimen.tab_height_test);
         log("abh = " + getActionBarHeight());
         mPagerView.setMinHeaderHeight(tabStripHeight + getActionBarHeight());
         mPagerView.setHeaderParallaxWidth(getResources().getDimension(R.dimen.header_parallax_width));

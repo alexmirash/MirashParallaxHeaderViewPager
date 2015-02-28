@@ -19,6 +19,7 @@
         <attr name="minHeaderHeight" format="dimension"/>
         <attr name="parallaxHeightFactor" format="float"/>
         <attr name="parallaxWidth" format="dimension"/>
+        <attr name="tabStripLayout" format="reference"/>
     </declare-styleable>
 
 </resources>
