@@ -1,6 +1,5 @@
 package com.alexmirash.parallaxheaderviewpagersample;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;

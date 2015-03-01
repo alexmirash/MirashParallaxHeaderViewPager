@@ -10,8 +10,6 @@ import android.view.ViewGroup;
 import com.alexmirash.parallaxheaderviewpager.view.ParallaxHeaderPagerView;
 import com.alexmirash.parallaxheaderviewpagersample.fragment.SampleTabPagerAdapter;
 
-import static com.alexmirash.parallaxheaderviewpager.util.MirashUtils.log;
-
 public class SampleActivity extends ActionBarActivity {
     private int mActionBarHeight;
     private ParallaxHeaderPagerView mPagerView;
@@ -45,7 +43,6 @@ public class SampleActivity extends ActionBarActivity {
 
     private void setupHeaderParams() {
         int tabStripHeight = getResources().getDimensionPixelSize(R.dimen.tab_height);
-        log("abh = " + getActionBarHeight());
         mPagerView.setMinHeaderHeight(tabStripHeight + getActionBarHeight());
         mPagerView.setHeaderParallaxWidth(getResources().getDimension(R.dimen.header_parallax_width));
 //        mPagerView.setTabUnderHeader(true);

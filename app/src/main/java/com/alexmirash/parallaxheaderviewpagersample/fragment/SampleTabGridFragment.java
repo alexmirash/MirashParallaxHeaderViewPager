@@ -23,7 +23,7 @@ public class SampleTabGridFragment extends TabHolderGridFragment<HeaderGridView>
         mListItems = new ArrayList<>();
         int count = 50 + new Random().nextInt(50);
         for (int i = 0; i < count; i++) {
-            mListItems.add(new Item(R.drawable.ic_launcher));
+            mListItems.add(new Item(i > 2 ? R.drawable.ic_launcher : R.drawable.droid));
         }
     }
 
