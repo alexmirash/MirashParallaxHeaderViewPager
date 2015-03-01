@@ -5,8 +5,8 @@ import android.view.LayoutInflater;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import com.alexmirash.parallaxheaderviewpagersample.R;
 import com.alexmirash.parallaxheaderviewpager.fragment.TabHolderListFragment;
+import com.alexmirash.parallaxheaderviewpagersample.R;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -26,13 +26,13 @@ public class SampleTabListFragmentShort extends TabHolderListFragment<ListView> 
     }
 
     @Override
-    protected ListView createListView(LayoutInflater inflater) {
+    protected ListView createScrollingRootView(LayoutInflater inflater) {
         return (ListView) inflater.inflate(R.layout.fragment_list, null);
     }
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mListView.setAdapter(new ArrayAdapter<>(getActivity(), R.layout.list_item, android.R.id.text1, mListItems));
+        mRootScrollingView.setAdapter(new ArrayAdapter<>(getActivity(), R.layout.list_item, android.R.id.text1, mListItems));
     }
 }

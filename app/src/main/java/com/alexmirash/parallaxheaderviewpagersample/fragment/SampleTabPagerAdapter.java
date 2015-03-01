@@ -29,13 +29,13 @@ public class SampleTabPagerAdapter extends TabPagerAdapter {
     protected ScrollTabHolderFragment getTabItem(int position) {
         switch (position) {
             case 0:
-                return new SampleTabListFragment();
+                return new SampleTabGridFragment();
             case 1:
                 return new SampleTabScrollFragment();
             case 2:
                 return new SampleTabScrollFragmentShort();
-     /*       case 3:
-                return new SampleTabListFragmentShort();*/
+            case 3:
+                return new SampleTabListFragment();
             default:
                 return new SampleTabListFragment();
         }
