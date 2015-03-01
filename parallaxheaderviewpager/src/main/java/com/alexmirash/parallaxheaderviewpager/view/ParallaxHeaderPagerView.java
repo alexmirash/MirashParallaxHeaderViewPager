@@ -15,7 +15,6 @@ import com.alexmirash.parallaxheaderviewpager.view.tabstrip.PagerSlidingTabStrip
 import com.nineoldandroids.view.ViewHelper;
 
 import static com.alexmirash.parallaxheaderviewpager.util.MirashUtils.clamp;
-import static com.alexmirash.parallaxheaderviewpager.util.MirashUtils.log;
 
 /**
  * @author Mirash
@@ -49,6 +48,7 @@ public class ParallaxHeaderPagerView extends FrameLayout implements IScrollTabHo
             setMinHeaderHeight(a.getDimensionPixelSize(R.styleable.ParallaxHeaderPagerView_minHeaderHeight, 0));
             setHeaderParallaxHeightFactor(a.getFloat(R.styleable.ParallaxHeaderPagerView_parallaxHeightFactor, 0));
             setHeaderParallaxWidth(a.getDimensionPixelSize(R.styleable.ParallaxHeaderPagerView_parallaxWidth, 0), false);
+            setTabUnderHeader(a.getBoolean(R.styleable.ParallaxHeaderPagerView_isTabUnderHeader, false));
             tabStripLayoutId = a.getResourceId(R.styleable.ParallaxHeaderPagerView_tabStripLayout, R.layout.default_tab_strip);
             a.recycle();
         }
@@ -70,11 +70,13 @@ public class ParallaxHeaderPagerView extends FrameLayout implements IScrollTabHo
         mHeader = header;
         mHeaderContainer.addView(header, 0);
         mAttrs.setHeaderHeight(headerHeight);
+        if (mAttrs.isTabUnderHeader()) {
+            updateTabUnderHeaderMode();
+        }
     }
 
     public void setPagerAdapter(TabPagerAdapter adapter) {
         mPagerAdapter = adapter;
-        log("setPagerAdapter");
         mPagerAdapter.setTabHolderScrollingContent(this);
         mViewPager.setAdapter(mPagerAdapter);
         mViewPager.setOffscreenPageLimit(mPagerAdapter.getCount());
@@ -101,17 +103,27 @@ public class ParallaxHeaderPagerView extends FrameLayout implements IScrollTabHo
         }
     }
 
+    public void setTabUnderHeader(boolean isTabUnderHeader) {
+        if (mAttrs.isTabUnderHeader() != isTabUnderHeader) {
+            mAttrs.setTabUnderHeader(isTabUnderHeader);
+            if (mHeader != null) {
+                updateTabUnderHeaderMode();
+            }
+        }
+    }
+
+    private void updateTabUnderHeaderMode() {
+        int tabHeight = mPagerSlidingTabStrip.getLayoutParams().height;
+        ((LayoutParams) mHeader.getLayoutParams()).bottomMargin = tabHeight;
+        mAttrs.setHeaderHeight(mAttrs.getHeaderHeight() + tabHeight);
+    }
+
     public PagerSlidingTabStrip getSlidingTabStrip() {
         return mPagerSlidingTabStrip;
     }
 
     public ViewPager getViewPager() {
         return mViewPager;
-    }
-
-    //TODO
-    public void setTabUnderHeader(boolean isWhat) {
-        ((MarginLayoutParams) mHeader.getLayoutParams()).bottomMargin = 144 /*mPagerSlidingTabStrip.getHeight()*/;
     }
 
     @Override

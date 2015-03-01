@@ -8,6 +8,7 @@ public class Attributes {
     private float mParallaxHeightFactor;
     private float mParallaxWidth;
     private int mHeaderHeight;
+    private boolean mIsTabUnderHeader;
 
     int getHeaderHeight() {
         return mHeaderHeight;
@@ -40,4 +41,13 @@ public class Attributes {
     float getParallaxWidth() {
         return mParallaxWidth;
     }
+
+    boolean isTabUnderHeader() {
+        return mIsTabUnderHeader;
+    }
+
+    public void setTabUnderHeader(boolean isTabOverlapHeader) {
+        mIsTabUnderHeader = isTabOverlapHeader;
+    }
+
 }

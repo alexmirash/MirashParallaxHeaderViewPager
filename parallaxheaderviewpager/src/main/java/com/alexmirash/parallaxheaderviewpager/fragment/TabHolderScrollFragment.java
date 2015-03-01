@@ -8,8 +8,6 @@ import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.widget.ScrollView;
 
-import static com.alexmirash.parallaxheaderviewpager.util.MirashUtils.log;
-
 /**
  * @author Mirash
  */
@@ -22,7 +20,6 @@ public abstract class TabHolderScrollFragment<T extends ScrollView> extends Scro
 
     @Override
     public final View onCreateView(LayoutInflater inflater, @Nullable final ViewGroup container, @Nullable Bundle savedInstanceState) {
-        log("onCreateView " + mPosition + "; " + getClass().getSimpleName());
         mScrollView = createRootScrollView(inflater);
         mScrollView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
         mScrollView.getViewTreeObserver().addOnScrollChangedListener(this);
@@ -39,12 +36,6 @@ public abstract class TabHolderScrollFragment<T extends ScrollView> extends Scro
         }
         mScrollView.addView(contentView, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
         return mScrollView;
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        log("onDestroyView " + mPosition);
     }
 
     protected abstract View createViewContent(LayoutInflater inflater, Bundle savedInstanceState);

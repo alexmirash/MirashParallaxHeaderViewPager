@@ -5,8 +5,6 @@ import android.support.v4.app.Fragment;
 
 import com.alexmirash.parallaxheaderviewpager.IScrollTabHolder;
 
-import static com.alexmirash.parallaxheaderviewpager.util.MirashUtils.log;
-
 
 public abstract class ScrollTabHolderFragment extends Fragment implements IScrollTabHolder {
     public static final String ARG_POSITION = "position";
@@ -21,7 +19,6 @@ public abstract class ScrollTabHolderFragment extends Fragment implements IScrol
     }
 
     public void setScrollTabHolder(IScrollTabHolder scrollTabHolder) {
-        log("setScrollTabHolder to fragment " + mPosition);
         mScrollTabHolder = scrollTabHolder;
     }
 

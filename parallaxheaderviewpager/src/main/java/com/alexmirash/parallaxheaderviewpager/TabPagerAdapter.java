@@ -10,8 +10,6 @@ import com.alexmirash.parallaxheaderviewpager.fragment.ScrollTabHolderFragment;
 
 import java.util.List;
 
-import static com.alexmirash.parallaxheaderviewpager.util.MirashUtils.log;
-
 /**
  * @author Mirash
  */
@@ -40,11 +38,9 @@ public abstract class TabPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        log("getItem " + position);
         ScrollTabHolderFragment fragment = getTabItem(position);
         Bundle bundle = fragment.getArguments();
         if (bundle == null) {
-            log("bundle is  null -> create and put pos = " + position);
             bundle = new Bundle();
             fragment.setArguments(bundle);
         }
@@ -58,7 +54,6 @@ public abstract class TabPagerAdapter extends FragmentPagerAdapter {
     }
 
     public void setTabHolderScrollingContent(IScrollTabHolder listener) {
-        log("setTabHolderScrollingContent ");
         mListener = listener;
         //rotation is a dangerous thing
         List<Fragment> fragments = mFragmentManager.getFragments();

@@ -9,8 +9,6 @@ import android.widget.AbsListView.OnScrollListener;
 import android.widget.FrameLayout;
 import android.widget.ListView;
 
-import static com.alexmirash.parallaxheaderviewpager.util.MirashUtils.log;
-
 public abstract class TabHolderListFragment<T extends ListView> extends ScrollTabHolderFragment implements OnScrollListener {
     protected FrameLayout mRootView;
     protected T mListView;
@@ -19,7 +17,6 @@ public abstract class TabHolderListFragment<T extends ListView> extends ScrollTa
 
     @Override
     public final View onCreateView(LayoutInflater inflater, final ViewGroup container, Bundle savedInstanceState) {
-        log("onCreateView " + mPosition + "; " + getClass().getSimpleName());
         mRootView = new FrameLayout(getActivity());
         mListView = createListView(inflater);
         FrameLayout placeHolderView = new FrameLayout(getActivity());
@@ -28,12 +25,6 @@ public abstract class TabHolderListFragment<T extends ListView> extends ScrollTa
         mRootView.addView(mListView);
         onCreateViewContent(inflater, savedInstanceState);
         return mRootView;
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        log("onDestroyView " + mPosition);
     }
 
     protected void onCreateViewContent(LayoutInflater inflater, Bundle savedInstanceState) {

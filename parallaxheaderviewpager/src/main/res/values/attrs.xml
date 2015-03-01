@@ -20,6 +20,7 @@
         <attr name="parallaxHeightFactor" format="float"/>
         <attr name="parallaxWidth" format="dimension"/>
         <attr name="tabStripLayout" format="reference"/>
+        <attr name="isTabUnderHeader" format="boolean"/>
     </declare-styleable>
 
 </resources>
